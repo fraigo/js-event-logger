@@ -10,7 +10,8 @@ window.onload = function() {
   base.style.right = "20px";
   base.style.backgroundColor = "rgba(255,255,255,0.7)";
   base.style.border = "1px solid #DDD";
-  base.style.borderRadius = "5px 5px";
+	base.style.borderRadius = "5px 5px";
+	base.style.whiteSpace = 'nowrap';
   // viewport content
   base.innerHTML = localStorage.getItem("logdata");
   document.body.appendChild(base);
