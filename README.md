@@ -14,6 +14,8 @@ Include the script in your site :
 When you insert the script in your site, a new floating window will appear with information about the current events.
 If the script is embedded in the whole site, it can log and save all the event history between page changes.
 
+![](screenshot.png)
+
 ## Demo
 
 Visit https://fraigo.github.io/js-event-logger/
