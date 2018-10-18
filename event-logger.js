@@ -1,23 +1,26 @@
 window.onload = function() {
-  var base = document.createElement("div");
+  var base = document.createElement("textarea");
 	// viewport style
   base.style.fontSize = "10pt";
   base.style.width = "60%";
   base.style.height = "100px";
-  base.style.overflow = "auto";
+  base.style.whiteSpace = "pre";
   base.style.position = "fixed";
   base.style.bottom = "10px";
   base.style.right = "20px";
   base.style.backgroundColor = "rgba(255,255,255,0.7)";
   base.style.border = "1px solid #DDD";
 	base.style.borderRadius = "5px 5px";
-	base.style.whiteSpace = 'nowrap';
+	base.readOnly = true;
+	base.setAttribute("title", "Click to copy to clipboard and clear");
   // viewport content
-  base.innerHTML = localStorage.getItem("logdata");
+  base.value = localStorage.getItem("logdata");
   document.body.appendChild(base);
   // viewport click handler
   base.onclick = function(ev) {
-    base.innerHTML = "";
+		base.select();
+		document.execCommand('copy') ;
+    base.value = "";
     localStorage.setItem("logdata", "");
   };
   // keydown handler
@@ -72,8 +75,8 @@ window.onload = function() {
   };
   // log events to viewport and save
   window._logEvents = function(data) {
-    base.innerHTML += "[" + _timeFormat() + "] " + data + "<br>";
-    localStorage.setItem("logdata", base.innerHTML);
+    base.value += "[" + _timeFormat() + "] " + data + "\n";
+    localStorage.setItem("logdata", base.value);
     base.scrollTop = base.scrollHeight;
   };
 
